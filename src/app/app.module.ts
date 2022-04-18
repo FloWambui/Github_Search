@@ -9,6 +9,7 @@ import { RepoNameComponent } from './components/repo-name/repo-name.component';
 import { NameResultComponent } from './components/name-result/name-result.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProfileComponent,
     RepoNameComponent,
     NameResultComponent,
-    NavbarComponent
+    NavbarComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
