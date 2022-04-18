@@ -1,1 +1,25 @@
-<p>profile works!</p>
+<div class="container-fluid">
+  <div class="text-center">GITHUB PROFILE</div>
+  <div class="user-deets">
+    <div id="profile" class="row">
+      <img class="ml-0 col-5 img-responsive img-circle" src{{user.avater_url}} height="300px" width="150px">
+      <div class="col-5">
+        <p *ngIf="user.name"><span>Name:</span>&nbsp;&nbsp; {{user.name}}</p>
+        <p *ngIf="user.login"><span>Username:</span>&nbsp;&nbsp; {{user.login}}</p>
+        <p><span>Followers:</span>{{user.followers}}</p>
+        <p><span>Following:</span>{{user.following}}</p>
+        <p *ngIf="user.public_repos"><span>Public repositories:</span>&nbsp;&nbsp; {{user.public_repos}}</p>
+        <p *ngIf="user.bio"><span>Bio:</span>&nbsp;&nbsp; {{user.bio}}</p>
+        <p *ngIf="user.created_at"><span>Account Created:</span>&nbsp;&nbsp; {{user.created_at|date}}
+          {{user.created_at}} days ago.</p>
+
+      </div>
+      <div class="btn-container">
+        <button class="btn btn-danger" id="repo-bttn" (click)="toggleRepositories()">View Repositories</button>
+      </div>
+    </div>
+  </div>
+  <div id="repos" *ngIf ='showRepositories'>
+      
+  </div>
+</div>
