@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div *ngIf= "user.login !== 'User not found'"> 
+      <h2 class="text-center"> Here is {{user.login|titlecase}}'s Github Profile</h2>
+        <div  id="user-details">
+            <div id="profile" class="row">
+              <img class="ml-0 col-5 img-responsive img-circle" src={{user.avatar_url}} height="200px" width="100px">
+              <div class="col-5 text-left">
+                <p *ngIf="user.name"><span>Name:</span>&nbsp;&nbsp; {{user.name}}</p>
+                <p *ngIf="user.login"><span>Name:</span>&nbsp;&nbsp;{{user.login}}</p>
+                <p><span>Followers:</span>{{user.followers}}</p>
+                <p><span>Following:</span>{{user.following}}</p>
+                <p *ngIf="user.public_repos"><span>Public repositories:</span>&nbsp;&nbsp; {{user.public_repos}}</p>
+                <p *ngIf="user.bio"><span>Bio:</span>&nbsp;&nbsp; {{user.bio}}</p>
+                <p *ngIf="user.created_at"><span>Created:</span>&nbsp;&nbsp; {{user.created_at|date}} {{user.created_at}} day(s) ago. </p>
+              
+              </div>
+              <div class="btn-container">
+                <button class="btn btn-outline-dark" id="repoBtn" (click)="toggleRepositories()">Repositories</button>
+              </div>
+           </div>
+  
+        
+  
+      </div>   
+      <div id="repos" *ngIf= "showRepositories">
+        <app-repo-name []="repos"></app-repo-name>
+      </div>
+    </div>
+  
+  
+    <div *ngIf= "user.login === 'User not found'" style="padding-top: 100px; font-weight: bold; font-size: 40px;">
+      <p class="text-center"> 
+        Oops! there is no user matching the name you provided.
+     </p>
+    <p class="text-center">
+        Kindly enter a valid user name
+    </p>
+    </div>
+      
+        
+  </div>
