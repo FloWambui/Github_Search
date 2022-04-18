@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/models/user';
+import { Repository } from 'src/app/models/repository';
 
 
 
@@ -13,7 +14,7 @@ import { User } from 'src/app/models/user';
 export class ProfileComponent implements OnInit {
 
   user!:User;
-  // repos:repository[];
+  repos!:Repository[];
 
   showRepositories=false;
 
