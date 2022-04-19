@@ -7,7 +7,8 @@ import { Repository } from 'src/app/models/repository';
   styleUrls: ['./repo-name.component.css']
 })
 export class RepoNameComponent implements OnInit {
-  @Input() repos!:Repository
+  @Input()
+  repos!: Repository [];
   constructor() { }
 
   ngOnInit(): void {

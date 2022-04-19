@@ -8,7 +8,7 @@ import { Repository } from 'src/app/models/repository';
 })
 export class ResultsRepoComponent implements OnInit {
   @Input()
-  repos!: Repository;
+  repos!: Repository[];
 
   constructor() { }
 

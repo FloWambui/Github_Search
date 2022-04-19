@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Repository } from '../models/repository';
 import { User } from '../models/user'
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,7 @@ export class ProfileService {
 
 
     let promise = new Promise<void>((resolve, reject) => {
-      this.http.get<userApiResponse>(`https://api.github.com/users/${username}?client_id=1179d43fb4eb61d15d6b3855fd52434a802d74e4`).toPromise().then(response => {
+      firstValueFrom(this.http.get<userApiResponse>(`https://api.github.com/users/${username}?client_id=1179d43fb4eb61d15d6b3855fd52434a802d74e4`)).then(response => {
         this.user.name = response!.name
         this.user.login = response!.login
         this.user.bio = response!.bio
@@ -71,14 +72,14 @@ export class ProfileService {
       for (let i = 0; i < arrayLength; i++) {
         this.repos.pop()
       }
-      this.http.get<repoApiResponse>(`https://api.github.com/users/${username}/repos?client_id=1179d43fb4eb61d15d6b3855fd52434a802d74e4`).toPromise().then(response => {
+      firstValueFrom(this.http.get<repoApiResponse>(`https://api.github.com/users/${username}/repos?client_id=1179d43fb4eb61d15d6b3855fd52434a802d74e4`)).then(response => {
         for (let i = 0; i < this.user.public_repos; i++) {
-          let repo = new Repository("", "", "", 0, 0)
+          let repo = new Repository("", "", "", "", 0)
 
           repo.name = response!["name"]
           repo.description = response!["description"]
           repo.language = response!["language"]
-          // repo.html_url = response!["html_url"]
+          repo.html_url = response!["html_url"]
           repo.forks = response!["forks"]
 
           this.repos.push(repo)

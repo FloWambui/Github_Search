@@ -25,12 +25,12 @@ export class ProfileComponent implements OnInit {
 
   constructor(private profileService:ProfileService, private http:HttpClient) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.profileService.requestUserInfo("FloWambui")
     this.user=this.profileService.user
     this.profileService.requestRepositories("FloWambui")
     this.repos=this.profileService.repos
-    
+
     this.showRepositories=false;
     }
 
