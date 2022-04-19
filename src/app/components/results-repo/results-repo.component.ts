@@ -7,7 +7,8 @@ import { Repository } from 'src/app/models/repository';
   styleUrls: ['./results-repo.component.css']
 })
 export class ResultsRepoComponent implements OnInit {
-  @Input() repos!:Repository;
+  @Input()
+  repos!: Repository;
 
   constructor() { }
 
