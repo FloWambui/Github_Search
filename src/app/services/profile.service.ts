@@ -33,7 +33,7 @@ export class ProfileService {
 
 
     let promise = new Promise<void>((resolve, reject) => {
-      firstValueFrom(this.http.get<userApiResponse>(`https://api.github.com/users/${username}?client_id=1179d43fb4eb61d15d6b3855fd52434a802d74e4`)).then(response => {
+      firstValueFrom(this.http.get<userApiResponse>(`https://api.github.com/users/${username}?apiKey=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`)).then(response => {
         this.user.name = response!.name
         this.user.login = response!.login
         this.user.bio = response!.bio
@@ -72,7 +72,7 @@ export class ProfileService {
       for (let i = 0; i < arrayLength; i++) {
         this.repos.pop()
       }
-      firstValueFrom(this.http.get<repoApiResponse>(`https://api.github.com/users/${username}/repos?client_id=1179d43fb4eb61d15d6b3855fd52434a802d74e4`)).then(response => {
+      firstValueFrom(this.http.get<repoApiResponse>(`https://api.github.com/users/${username}/repos?apiKey=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`)).then(response => {
         for (let i = 0; i < this.user.public_repos; i++) {
           let repo = new Repository("", "", "", "", 0)
 

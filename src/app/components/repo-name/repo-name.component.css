@@ -1,0 +1,14 @@
+.card {
+  margin: 3%;
+  width: 19rem;
+  height: 16rem;
+  transform: translateY(-2px);
+  margin-left: 5%;
+  border-style: none;
+  box-shadow: 10px 10px 5px #2f2fa2;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+}
