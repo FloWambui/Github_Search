@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/models/user';
 import { Repository } from 'src/app/models/repository';
+import { ProfileService } from 'src/app/services/profile.service';
 
 
 
@@ -22,9 +23,15 @@ export class ProfileComponent implements OnInit {
     this.showRepositories=this.showRepositories
   }
 
-  constructor() { }
+  constructor(private profileService:ProfileService, private http:HttpClient) { }
 
   ngOnInit(): void {
-  }
+    this.profileService.requestUserInfo("FloWambui")
+    this.user=this.profileService.user
+    this.profileService.requestRepositories("FloWambui")
+    this.repos=this.profileService.repos
+    
+    this.showRepositories=false;
+    }
 
 }

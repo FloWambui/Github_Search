@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Repository } from 'src/app/models/repository';
 import { User } from 'src/app/models/user';
-
+import { ActivatedRoute } from '@angular/router';
+import { ProfileService } from 'src/app/services/profile.service';
 
 
 @Component({
@@ -20,9 +21,19 @@ export class NameResultComponent implements OnInit {
     this.showRepositories=!this.showRepositories
   }
 
-  constructor() { }
+  constructor(private route:ActivatedRoute, private profileService:ProfileService) { }
 
-  ngOnInit(): void {
+  results(){
+    this.profileService.requestUserInfo(this.username)
+    this.user=this.profileService.user
+    this.profileService.requestRepositories(this.username)
+    this.repos=this.profileService.repos
+
+    this.showRepositories=false;
+  }
+
+  ngOnInit(){
+    this.results()
   }
 
 }
