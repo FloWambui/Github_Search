@@ -26,9 +26,9 @@ export class ProfileComponent implements OnInit {
   constructor(private profileService:ProfileService, private http:HttpClient) { }
 
   ngOnInit(){
-    this.profileService.requestUserInfo("FloWambui")
+    this.profileService.requestUserInfo("flowambui")
     this.user=this.profileService.user
-    this.profileService.requestRepositories("FloWambui")
+    this.profileService.requestRepositories("flowambui")
     this.repos=this.profileService.repos
 
     this.showRepositories=false;
